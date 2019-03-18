@@ -11,13 +11,17 @@ public class Merge{
     if (lo >= hi){
       return;
     }
-    int[] temp = new int[data.length];
-    int j = 0;
     mergeH(data,lo,(lo+hi)/2);
     mergeH(data,(lo+hi)/2+1,hi);
-    int a = lo;
-    int b = (lo+hi)/2+1;
-    while (a < (lo+hi)/2+1 && b < hi+1){
+    merge(data, lo, (lo+hi)/2, hi);
+  }
+
+  public static void merge(int[] data, int lo, int mid, int hi){
+    int[] temp = new int[hi-lo];
+    for (int i = 0; i <= hi; i++){
+
+    }
+    while (a < (lo+hi)/2 && b < hi){
       if (a <= b){
         temp[j] = data[a];
         a++;
