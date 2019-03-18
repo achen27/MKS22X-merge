@@ -2,28 +2,26 @@ import java.util.Arrays;
 
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
-  public static void mergesort(int[]data){
-    int[] temp = new int[data.length];
-    mergeH(data,0,data.length-1);
+  public static void mergesort(int[]data){ //wrapper
+    //int[] temp = new int[data.length];
+    mergeH(data,0,data.length-1); //helper
   }
 
-  private static void mergeH(int[] data, int lo, int hi){
+  private static void mergeH(int[] data, int lo, int hi){ //sort helper
     if (lo >= hi){
       return;
     }
-    mergeH(data,lo,(lo+hi)/2);
+    mergeH(data,lo,(lo+hi)/2); //spliting array in halves
     mergeH(data,(lo+hi)/2+1,hi);
-    System.out.println("lo: "+lo+" mid: "+ (lo+hi)/2 +" hi: "+hi);
-    merge(data,lo,(lo+hi)/2+1,hi);
+    merge(data,lo,(lo+hi)/2+1,hi); //helper method to merge
   }
 
-  public static void merge(int[] data, int lo, int mid, int hi){
-    int[] temp = new int[hi-lo+1];
-    int a = lo;
+  public static void merge(int[] data, int lo, int mid, int hi){ //sort helper helper
+    int[] temp = new int[hi-lo+1]; //temp array
+    int a = lo; //stores values in variables
     int b = mid;
-    for(int i = 0; i < temp.length; i++){
-      System.out.println("middle: "+Arrays.toString(temp));
-      if (a < mid && b <= hi){
+    for(int i = 0; i < temp.length; i++){ //sorting values into temp
+      if (a < mid && b <= hi){ //while indexes are still in the two groups
         if (data[a] <= data[b]){
           temp[i] = data[a];
           a++;
@@ -31,26 +29,25 @@ public class Merge{
           temp[i] = data[b];
           b++;
         }
-      } else if (a >= mid){
+      } else if (a >= mid){ //a is out of bounds
         temp[i] = data[b];
         b++;
-      } else {
+      } else { //b is out of bounds
         temp[i] = data[a];
         a++;
       }
     }
-    System.out.println("final temp: "+Arrays.toString(temp));
-    int i = lo;
-    for(int j = 0; j < temp.length; j++){
-      data[i] = temp[j];
+
+    int i = lo; //idx for original array
+    for(int j = 0; j < temp.length; j++){ //loop through temp
+      data[i] = temp[j]; //copying
       i++;
-      System.out.println("original: "+Arrays.toString(data));
     }
 
   }
 
   public static void main(String[]args){
-    /*System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+    System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
       for(int size = 31250; size < 2000001; size*=2){
@@ -81,8 +78,8 @@ public class Merge{
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
       }
       System.out.println();
-    }*/
-    int[] ary = {38,27,43,3,9,82,10};
-    mergesort(ary);
+    }
+    //int[] ary = {38,27,43,3,9,82,10};
+    //mergesort(ary);
   }
 }
