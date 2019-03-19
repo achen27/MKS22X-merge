@@ -47,19 +47,22 @@ public class Merge{
   }
 
   private static void insertionsort(int[] data, int lo, int hi){
-    for (int i = lo+1; i <= hi; i++){
-      for (int j = i-1; j >= lo; j--){
-        if (data[i] <= data[j]){
-          int temp = data[j];
-          data[j] = data[i];
-          data[i] = temp;
-        }
+    for (int i = 1; i < data.length; i++){
+      int temp = data[i];
+      int j = i;
+      while (j > 0 && data[j-1] > temp){//shift until the number on the left is not larger
+        data[j] = data[j-1];
+        j--;
       }
+      data[j] = temp;
     }
   }
 
   public static void main(String[]args){
-    System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+    int[] ary = {4,3,2,10,12,1,5,6};
+    Merge.insertionsort(ary,0,ary.length-1);
+    System.out.println(Arrays.toString(ary));
+    /*System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
       for(int size = 31250; size < 2000001; size*=2){
@@ -92,6 +95,6 @@ public class Merge{
       System.out.println();
     }
     //int[] ary = {38,27,43,3,9,82,10};
-    //mergesort(ary);
+    //mergesort(ary);*/
   }
 }
