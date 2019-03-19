@@ -46,6 +46,18 @@ public class Merge{
 
   }
 
+  private static void insertionsort(int[] data, int lo, int hi){
+    for (int i = lo+1; i <= hi; i++){
+      for (int j = i-1; j >= lo; j--){
+        if (data[i] <= data[j]){
+          int temp = data[j];
+          data[j] = data[i];
+          data[i] = temp;
+        }
+      }
+    }
+  }
+
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
