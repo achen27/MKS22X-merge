@@ -8,7 +8,7 @@ public class Merge{
   }
 
   private static void mergeH(int[] data, int lo, int hi){ //sort helper
-    if (hi - lo <= 20){
+    if (hi - lo <= 47){
       insertionsort(data, lo, hi);
     //if (lo  >= hi){
       return;
@@ -62,7 +62,7 @@ public class Merge{
   }
 
   public static void main(String[]args){
-    /*System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+    System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
       for(int size = 31250; size < 2000001; size*=2){
@@ -93,14 +93,14 @@ public class Merge{
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
       }
       System.out.println();
-    }*/
-    int[] numbers = new int[20];
+    }
+    /*int[] numbers = new int[20];
     //Generates 10 Random Numbers in the range 1 -20
     for(int i = 0; i < numbers.length; i++) {
       numbers[i] = (int)(Math.random()*20 + 1);
     }//end for loop
     System.out.println(Arrays.toString(numbers));
     insertionsort(numbers, 0, 8);
-    System.out.println(Arrays.toString(numbers));
+    System.out.println(Arrays.toString(numbers));*/
   }
 }
