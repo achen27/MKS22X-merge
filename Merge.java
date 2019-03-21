@@ -16,39 +16,39 @@ public class Merge{
     //if (lo  >= hi){
       return;
     } else {
-      mergeH(data,lo,(lo+hi)/2); //spliting array in halves
-      mergeH(data,(lo+hi)/2+1,hi);
-      merge(data,lo,(lo+hi)/2+1,hi); //helper method to merge
+      mergeH(temp,data,lo,(lo+hi)/2); //spliting array in halves
+      mergeH(temp,data,(lo+hi)/2+1,hi);
+      merge(data,temp,lo,(lo+hi)/2+1,hi); //helper method to merge
     }
   }
 
-  public static void merge(int[] data, int lo, int mid, int hi){ //sort helper helper
-    int[] temp = new int[hi-lo+1]; //temp array
+  public static void merge(int[] data, int[] temp, int lo, int mid, int hi){ //sort helper helper
+    //int[] temp = new int[hi-lo+1]; //temp array
     int a = lo; //stores values in variables
     int b = mid;
-    for(int i = 0; i < temp.length; i++){ //sorting values into temp
+    for(int i = lo; i <= hi; i++){ //sorting values into temp
       if (a < mid && b <= hi){ //while indexes are still in the two groups
-        if (data[a] <= data[b]){
-          temp[i] = data[a];
+        if (temp[a] <= temp[b]){
+          data[i] = temp[a];
           a++;
         } else {
-          temp[i] = data[b];
+          data[i] = temp[b];
           b++;
         }
       } else if (a >= mid){ //a is out of bounds
-        temp[i] = data[b];
+        data[i] = temp[b];
         b++;
       } else { //b is out of bounds
-        temp[i] = data[a];
+        data[i] = temp[a];
         a++;
       }
     }
 
-    int i = lo; //idx for original array
+    /*int i = lo; //idx for original array
     for(int j = 0; j < temp.length; j++){ //loop through temp
       data[i] = temp[j]; //copying
       i++;
-    }
+    }*/
 
   }
 
